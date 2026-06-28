@@ -217,4 +217,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Form Submission Handling (Premium UI Feedback)
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent page reload
+            
+            const btn = form.querySelector('button[type="submit"]');
+            if (!btn) return;
+            
+            const originalText = btn.innerText;
+            const originalBg = btn.style.backgroundColor;
+            
+            // Show loading state
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
+            btn.style.opacity = '0.8';
+            btn.style.pointerEvents = 'none';
+
+            // Simulate network request delay
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
+                btn.style.backgroundColor = '#10B981'; // Success green
+                btn.style.color = '#fff';
+                btn.style.opacity = '1';
+                
+                // Reset form fields
+                form.reset();
+
+                // Revert button after 3 seconds
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = originalBg; 
+                    btn.style.pointerEvents = 'auto';
+                }, 3000);
+            }, 1500);
+        });
+    });
+
 });
