@@ -3,38 +3,1105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arsh Satsangi | Electrical & Electronics Engineer</title>
-    <meta name="description" content="Portfolio of Arsh Satsangi, B.Tech Electrical Engineering student specializing in Electronics, Embedded Systems, and Cybersecurity.">
+    <title>Arsh Satsangi | Premium Portfolio</title>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="dark-mode"> <!-- Default to dark mode for a premium feel -->
+    
+    <style>
+        /* =========================================
+           CSS VARIABLES & DESIGN TOKENS
+           ========================================= */
+        :root {
+            /* Light Luxury Theme (Default) */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent-blue: #0071e3;
+            --accent-purple: #bf48ff;
+            --gradient-accent: linear-gradient(135deg, #0071e3, #bf48ff);
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+            --card-radius: 24px;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-    <!-- Scroll Progress Bar -->
-    <div id="scroll-progress"></div>
+        body.dark-mode {
+            /* Dark Premium Theme */
+            --bg-primary: #000000;
+            --bg-secondary: #111111;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-blue: #2997ff;
+            --accent-purple: #bf48ff;
+            --glass-bg: rgba(28, 28, 30, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        /* =========================================
+           RESET & TYPOGRAPHY
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            cursor: none; /* Custom cursor */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .section-title {
+            font-size: clamp(3rem, 5vw, 5rem);
+            margin-bottom: 2rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            max-width: 600px;
+        }
+
+        section {
+            padding: 8rem 5%;
+            max-width: 1440px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* =========================================
+           UTILITIES & MICRO-INTERACTIONS
+           ========================================= */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            cursor: none;
+            border: none;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        body.dark-mode .btn-primary:hover {
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        /* Custom Cursor */
+        .cursor-glow {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-blue);
+            opacity: 0.2;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9998;
+            filter: blur(10px);
+            transition: width 0.3s, height 0.3s, opacity 0.3s;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+
+        a:hover ~ .cursor-glow, button:hover ~ .cursor-glow, .magnetic:hover ~ .cursor-glow {
+            width: 80px;
+            height: 80px;
+            opacity: 0.4;
+            background: var(--accent-purple);
+        }
+
+        /* Scroll Progress */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            width: 0%;
+            z-index: 10000;
+        }
+
+        /* Loading Screen */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.8s ease;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 113, 227, 0.2);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Floating Blobs (Parallax) */
+        .blobs-container {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite alternate;
+        }
+        .blob-1 {
+            width: 40vw; height: 40vw;
+            background: var(--accent-blue);
+            top: -10%; left: -10%;
+        }
+        .blob-2 {
+            width: 30vw; height: 30vw;
+            background: var(--accent-purple);
+            bottom: -10%; right: -10%;
+            animation-delay: -5s;
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 100px) scale(1.1); }
+        }
+
+        /* =========================================
+           NAVIGATION
+           ========================================= */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--text-primary);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            cursor: none;
+            transition: transform 0.3s;
+        }
+        .theme-toggle:hover { transform: rotate(45deg); }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: none;
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            background: var(--bg-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .hero-title {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-role {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            height: 3rem; /* For typing animation */
+        }
+
+        .typing-text {
+            color: var(--accent-blue);
+        }
+        .typing-cursor {
+            border-right: 3px solid var(--text-primary);
+            animation: blink 0.75s step-end infinite;
+        }
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        .hero-photo-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .hero-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* =========================================
+           ABOUT SECTION
+           ========================================= */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text p { margin-bottom: 1.5rem; }
+        .about-text strong { color: var(--text-primary); }
+
+        .about-visual {
+            position: relative;
+        }
+
+        /* EDIT HERE: About Photo */
+        .about-image-wrapper {
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            position: relative;
+        }
+        .about-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .about-visual:hover img { transform: scale(1.05); }
+
+        /* =========================================
+           STATS & ACHIEVEMENTS (Animated Counters)
+           ========================================= */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* =========================================
+           ACHIEVEMENTS SECTION
+           ========================================= */
+        .kicker {
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .achievement-card {
+            position: relative;
+            padding: 2.5rem;
+            border-radius: var(--card-radius);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(20px);
+        }
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glass-shadow);
+        }
+        /* Top Gradient Borders */
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+        .ac-1::before { background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+        .ac-2::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
+        .ac-3::before { background: linear-gradient(90deg, #10b981, #3b82f6); }
+        .ac-4::before { background: linear-gradient(90deg, #ef4444, #f97316); }
+
+        .ac-year-badge {
+            background: rgba(41, 151, 255, 0.15);
+            color: #2563eb;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            align-self: flex-start;
+        }
+        body.dark-mode .ac-year-badge { color: #60a5fa; }
+        .ac-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        .ac-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .ac-highlight {
+            color: #d97706; /* Golden/orange */
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* =========================================
+           SKILLS SECTION
+           ========================================= */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-group {
+            padding: 2.5rem;
+        }
+
+        .skill-group h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .skill-item { margin-bottom: 1.5rem; }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .skill-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: var(--glass-border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .skill-bar-fill {
+            height: 100%;
+            width: 0; /* Animated */
+            background: var(--gradient-accent);
+            border-radius: 3px;
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .skill-tag {
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+        .skill-tag:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+        }
+
+        /* =========================================
+           PROJECTS SECTION (Filterable)
+           ========================================= */
+        .project-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* EDIT HERE: Project Image Placeholders */
+        .project-img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        .project-card:hover .project-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .edit-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .project-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* =========================================
+           JOURNEY / TIMELINE
+           ========================================= */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 2px;
+            background: var(--glass-border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 11px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            box-shadow: 0 0 0 4px var(--bg-primary);
+            transition: var(--transition-smooth);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.3);
+            background: var(--accent-purple);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content p { color: var(--text-secondary); }
+        .timeline-content ul {
+            list-style: none;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+        }
+        .timeline-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        /* =========================================
+           FUTURE PLANS
+           ========================================= */
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .future-card {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .future-icon {
+            font-size: 2.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+        }
+
+        .future-card h3 { margin-bottom: 1rem; }
+        .future-card p, .future-card ul {
+            color: var(--text-secondary);
+            text-align: left;
+            list-style-position: inside;
+        }
+
+        /* =========================================
+           GITHUB CONTRIBUTION / ACTIVITY
+           ========================================= */
+        .activity-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .activity-box {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+            background: var(--glass-border);
+            transition: transform 0.2s;
+        }
+        .activity-box:hover { transform: scale(1.2); }
+        .activity-level-1 { background: rgba(0, 113, 227, 0.3); }
+        .activity-level-2 { background: rgba(0, 113, 227, 0.6); }
+        .activity-level-3 { background: rgba(0, 113, 227, 0.9); }
+
+        /* =========================================
+           TECH STACK MARQUEE
+           ========================================= */
+        .marquee-wrapper {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            padding: 3rem 0;
+            background: var(--bg-secondary);
+            margin: 6rem 0;
+        }
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+        .marquee-item {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            padding: 0 3rem;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        .marquee-item:hover { opacity: 1; color: var(--text-primary); }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* =========================================
+           CONTACT & FOOTER
+           ========================================= */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+        .contact-info a:hover { color: var(--accent-blue); }
+        .contact-info i {
+            font-size: 1.5rem;
+            color: var(--accent-purple);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .form-group { position: relative; }
+        .form-control {
+            width: 100%;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+        .form-control:focus {
+            border-color: var(--accent-blue);
+            background: var(--bg-primary);
+        }
+        textarea.form-control { resize: vertical; min-height: 150px; }
+
+        footer {
+            text-align: center;
+            padding: 4rem 5%;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+            color: var(--text-secondary);
+        }
+
+        /* Back to top */
+        #back-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: none;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: var(--transition-smooth);
+            z-index: 1000;
+        }
+        #back-top.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        /* =========================================
+           REVIEWS / TESTIMONIALS
+           ========================================= */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .review-card {
+            padding: 2.5rem;
+            border-radius: var(--card-radius);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glass-shadow);
+        }
+        .review-icon {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            opacity: 0.5;
+        }
+        .review-text {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 1.5rem;
+        }
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .reviewer-details h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-primary);
+        }
+        .reviewer-details p {
+            font-size: 0.85rem;
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        /* =========================================
+           SCROLL REVEAL ANIMATIONS
+           ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 992px) {
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--glass-bg);
+                backdrop-filter: blur(20px);
+                padding: 2rem;
+                gap: 1.5rem;
+                opacity: 0;
+                pointer-events: none;
+                transition: var(--transition-smooth);
+                text-align: center;
+            }
+            .nav-links.active {
+                opacity: 1;
+                pointer-events: all;
+            }
+            .hero-title { font-size: 3rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
 
     <!-- Custom Cursor -->
-    <div class="cursor-glow"></div>
     <div class="cursor-dot"></div>
+    <div class="cursor-glow"></div>
 
-    <!-- Animated Background Blobs -->
-    <div class="bg-blobs">
+    <!-- Scroll Progress -->
+    <div id="scroll-progress"></div>
+
+    <!-- Background Blobs -->
+    <div class="blobs-container">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <a href="#hero">Arsh<span>.</span></a>
-        </div>
+    <nav class="glass-panel" id="navbar">
+        <a href="#" class="nav-brand magnetic">Arsh.</a>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -42,438 +1109,771 @@
             <li><a href="#journey">Journey</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="nav-actions">
-            <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">
-                <i class="fa-solid fa-sun"></i>
+        <div class="nav-controls">
+            <button class="theme-toggle magnetic" id="theme-btn">
+                <i class="fa-solid fa-moon"></i>
             </button>
-            <div class="hamburger">
+            <button class="menu-btn" id="menu-btn">
                 <i class="fa-solid fa-bars"></i>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h2 class="greeting">Hi, I'm</h2>
-                <h1 class="name">Arsh Satsangi</h1>
-                <h3 class="subtitle">Electrical & Electronics Engineering Student</h3>
-                <p class="tagline">Building Intelligent Systems through<br>
-                <span class="highlight">Electronics • Embedded Systems • Cybersecurity</span></p>
-                <div class="typing-container">
-                    <span class="typing-prefix">I am a </span>
-                    <span id="typing-text"></span><span class="cursor">|</span>
-                </div>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content reveal">
+            <!-- EDIT HERE: Hero Photo Placeholder -->
+            <div class="hero-photo-container">
+                <img src="profile.jpg" alt="Arsh Satsangi">
+            </div>
+            
+            <div class="hero-badge">Available for Internships</div>
+            <h1 class="hero-title">Arsh Satsangi</h1>
+            <div class="hero-role">
+                <span class="typing-text"></span><span class="typing-cursor"></span>
+            </div>
+            
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary magnetic">View Projects <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#contact" class="btn btn-outline magnetic">Contact Me</a>
+            </div>
+
+            <div class="hero-meta">
+                <span><i class="fa-solid fa-location-dot"></i> Agra, India</span>
+                <span id="current-time"><i class="fa-regular fa-clock"></i> </span>
+                <span id="current-year"><i class="fa-solid fa-calendar"></i> </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title reveal">About Me.</h2>
+        <p class="section-subtitle reveal">Blending electrical engineering with modern intelligence.</p>
+        
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>I am a B.Tech Electrical Engineering student at Dayalbagh Educational Institute, currently in my <strong>3rd Year</strong>, specializing in Electronics.</p>
+                <p>I enjoy building practical engineering solutions by combining <strong>electrical systems, embedded electronics, automation, IoT, and cybersecurity.</strong></p>
+                <p>I actively participate in hackathons, engineering competitions, and research while continuously learning new technologies to build secure and intelligent hardware.</p>
+                <a href="#" class="btn btn-primary magnetic mt-4"><i class="fa-solid fa-download"></i> Download Resume</a>
+            </div>
+            
+            <!-- EDIT HERE: About Visual / Photo -->
+            <div class="about-visual reveal">
+                <div class="about-image-wrapper glass-panel">
+                    <img src="1profile.jpg" alt="About Arsh">
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Stats Counter Section -->
-        <section id="stats" class="stats-section fade-in">
-            <div class="stats-container">
-                <div class="stat-item">
-                    <h3 class="stat-num" data-target="4">0</h3>
-                    <p>Major Projects</p>
+        <!-- Animated Statistics -->
+        <div class="stats-grid reveal">
+            <div class="stat-card glass-panel">
+                <div class="stat-number" data-target="5" data-plus="true">0</div>
+                <div class="stat-label">Major Hackathons</div>
+            </div>
+            <div class="stat-card glass-panel">
+                <div class="stat-number" data-target="5">0</div>
+                <div class="stat-label">Core Projects</div>
+            </div>
+            <div class="stat-card glass-panel">
+                <div class="stat-number" data-target="1">0</div>
+                <div class="stat-label">Research Qualification</div>
+            </div>
+            <div class="stat-card glass-panel">
+                <div class="stat-number" data-target="1">0</div>
+                <div class="stat-label">1st Prize Won</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <span class="kicker reveal">RECOGNITION</span>
+        <h2 class="section-title reveal" style="-webkit-text-fill-color: var(--text-primary); font-family: 'Inter', sans-serif; font-weight: 900; letter-spacing: -0.04em;">Achievements</h2>
+        <p class="section-subtitle reveal">Milestones I've reached through hard work and curiosity.</p>
+        
+        <div class="achievements-grid reveal">
+            <!-- Card 1 -->
+            <div class="achievement-card ac-1">
+                <div class="ac-year-badge">2026</div>
+                <h3 class="ac-title">HackSecure X — International Hackathon</h3>
+                <p class="ac-desc">Competed against 250 teams from around the world in one of the most prestigious cybersecurity hackathons. Our team demonstrated strong technical skills and innovative problem-solving to secure a global top-11 finish.</p>
+                <div class="ac-highlight"><i class="fa-regular fa-square"></i> Top 11 / 250 Teams Globally</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="achievement-card ac-2">
+                <div class="ac-year-badge">2026</div>
+                <h3 class="ac-title">DEI Virtual Labs Hackathon</h3>
+                <p class="ac-desc">Achieved a top-20 ranking in this national-level competition among 200 participating teams. The event focused on innovation with virtual lab technology and practical engineering solutions.</p>
+                <div class="ac-highlight"><i class="fa-regular fa-square"></i> Top 20 / 200 Teams — National Level</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="achievement-card ac-3">
+                <div class="ac-year-badge">2025</div>
+                <h3 class="ac-title">Anveshan Zonal Research Convention</h3>
+                <p class="ac-desc">Qualified for the prestigious North Zone Student Research Convention under Anveshan 2025 — a competitive research programme recognising outstanding undergraduate research across institutions.</p>
+                <div class="ac-highlight"><i class="fa-regular fa-square"></i> Qualified — North Zone Convention</div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="achievement-card ac-4">
+                <div class="ac-year-badge">2025</div>
+                <h3 class="ac-title">1st Position — Cybersecurity Quiz Competition</h3>
+                <p class="ac-desc">Secured first place in "Cyber Career Insight: Quiz It. Win It. Secure It." — a competition organised by IEEE DEI Student Branch and the Training & Placement Cell in collaboration with NGMB Software Solutions Pvt. Ltd. The event covered cyberattack methodologies, major cybersecurity domains, and modern threat mitigation strategies.</p>
+                <div class="ac-highlight"><i class="fa-regular fa-square"></i> 1st Position</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Marquee -->
+    <div class="marquee-wrapper">
+        <div class="marquee-track">
+            <!-- Duplicated for infinite effect -->
+            <span class="marquee-item">C/C++</span>
+            <span class="marquee-item">Python</span>
+            <span class="marquee-item">Embedded Systems</span>
+            <span class="marquee-item">Arduino</span>
+            <span class="marquee-item">IoT</span>
+            <span class="marquee-item">Cybersecurity</span>
+            <span class="marquee-item">Circuit Design</span>
+            <span class="marquee-item">Linux</span>
+            
+            <span class="marquee-item">C/C++</span>
+            <span class="marquee-item">Python</span>
+            <span class="marquee-item">Embedded Systems</span>
+            <span class="marquee-item">Arduino</span>
+            <span class="marquee-item">IoT</span>
+            <span class="marquee-item">Cybersecurity</span>
+            <span class="marquee-item">Circuit Design</span>
+            <span class="marquee-item">Linux</span>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title reveal">Expertise.</h2>
+        <p class="section-subtitle reveal">Technologies and concepts I work with.</p>
+        
+        <div class="skills-container reveal">
+            
+            <div class="skill-group glass-panel">
+                <h3>Engineering</h3>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Embedded Systems</span> <span>90%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
                 </div>
-                <div class="stat-item">
-                    <h3 class="stat-num" data-target="4">0</h3>
-                    <p>Achievements</p>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Electronics & Arduino</span> <span>95%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
                 </div>
-                <div class="stat-item">
-                    <h3 class="stat-num" data-target="2" data-plus="true">0</h3>
-                    <p>Hackathons</p>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Circuit Design & PCB</span> <span>80%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80%"></div></div>
                 </div>
-                <div class="stat-item">
-                    <h3 class="stat-num-text">3rd</h3>
-                    <p>Year Student</p>
+                <div class="skill-item">
+                    <div class="skill-info"><span>IoT & Digital Electronics</span> <span>85%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%"></div></div>
                 </div>
             </div>
-        </section>
 
-        <!-- About Section -->
-        <section id="about" class="about-section fade-in">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text glass-card">
-                    <i class="fa-solid fa-quote-left quote-icon"></i>
-                    <p>I am a B.Tech Electrical Engineering student at Dayalbagh Educational Institute with a specialization in Electronics. I enjoy building practical engineering solutions by combining electrical systems, embedded electronics, and cybersecurity. Through hackathons, research competitions, and hands-on projects, I continuously challenge myself to solve real-world problems and expand my technical expertise.</p>
+            <div class="skill-group glass-panel">
+                <h3>Programming</h3>
+                <div class="skill-item">
+                    <div class="skill-info"><span>C / C++</span> <span>85%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%"></div></div>
                 </div>
-                <div class="quick-facts glass-card">
-                    <h3>Quick Facts</h3>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Python</span> <span>80%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>MATLAB / Simulink</span> <span>75%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75%"></div></div>
+                </div>
+            </div>
+
+            <div class="skill-group glass-panel">
+                <h3>Hardware & Tools</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">Microcontrollers</span>
+                    <span class="skill-tag">FPGA / VHDL</span>
+                    <span class="skill-tag">Oscilloscope</span>
+                    <span class="skill-tag">Soldering</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">Proteus</span>
+                    <span class="skill-tag">Multisim</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title reveal">Selected Work.</h2>
+        <p class="section-subtitle reveal">Real-world solutions combining hardware and software.</p>
+        
+        <div class="project-filters reveal">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="hardware">Hardware/IoT</button>
+            <button class="filter-btn" data-filter="software">Software/Web</button>
+        </div>
+
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card glass-panel reveal" data-category="software">
+                <!-- EDIT HERE: Project Image -->
+                <div class="project-img-wrapper">
+                    <span class="edit-badge">Edit Project Image</span>
+                    <img src="https://via.placeholder.com/600x400?text=AI+Microgrid" alt="AI Microgrid Energy Scheduler">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">AI Microgrid Energy Scheduler</h3>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Algorithms</span>
+                    </div>
+                    <p class="project-desc">A smart scheduling system optimizing battery usage, solar generation, and grid consumption.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-outline"><i class="fa-brands fa-github"></i> Source</a>
+                        <a href="#" class="btn btn-primary">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card glass-panel reveal" data-category="hardware">
+                <!-- EDIT HERE: Project Image -->
+                <div class="project-img-wrapper">
+                    <span class="edit-badge">Edit Project Image</span>
+                    <img src="https://via.placeholder.com/600x400?text=Survey+Bot" alt="Road Condition Survey Bot">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Road Condition Survey Bot</h3>
+                    <div class="project-tech">
+                        <span class="tech-badge">Arduino</span>
+                        <span class="tech-badge">Sensors</span>
+                        <span class="tech-badge">Robotics</span>
+                    </div>
+                    <p class="project-desc">Robot capable of collecting road-condition information for automated analysis.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-outline"><i class="fa-brands fa-github"></i> Source</a>
+                        <a href="#" class="btn btn-primary">Video Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card glass-panel reveal" data-category="hardware">
+                <!-- EDIT HERE: Project Image -->
+                <div class="project-img-wrapper">
+                    <span class="edit-badge">Edit Project Image</span>
+                    <img src="https://via.placeholder.com/600x400?text=OptiPress" alt="OptiPress Industrial IIoT">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">OptiPress Industrial IIoT</h3>
+                    <div class="project-tech">
+                        <span class="tech-badge">IIoT</span>
+                        <span class="tech-badge">Arduino Opta</span>
+                        <span class="tech-badge">Automation</span>
+                    </div>
+                    <p class="project-desc">Industrial compressor monitoring and predictive maintenance solution.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-outline"><i class="fa-brands fa-github"></i> Source</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card glass-panel reveal" data-category="hardware">
+                <!-- EDIT HERE: Project Image -->
+                <div class="project-img-wrapper">
+                    <span class="edit-badge">Edit Project Image</span>
+                    <img src="https://via.placeholder.com/600x400?text=Smart+Dustbin" alt="Smart Dustbin">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Smart Dustbin</h3>
+                    <div class="project-tech">
+                        <span class="tech-badge">Arduino Nano</span>
+                        <span class="tech-badge">Ultrasonic Sensor</span>
+                    </div>
+                    <p class="project-desc">Automatic lid opening system using ultrasonic sensing for hygiene automation.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-outline"><i class="fa-brands fa-github"></i> Source</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card glass-panel reveal" data-category="software">
+                <!-- EDIT HERE: Project Image -->
+                <div class="project-img-wrapper">
+                    <span class="edit-badge">Edit Project Image</span>
+                    <img src="https://via.placeholder.com/600x400?text=Portfolio" alt="Portfolio Website">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Premium Portfolio Website</h3>
+                    <div class="project-tech">
+                        <span class="tech-badge">HTML/CSS/JS</span>
+                        <span class="tech-badge">UI/UX Design</span>
+                    </div>
+                    <p class="project-desc">This very website! A world-class, minimal, responsive personal portfolio.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-outline"><i class="fa-brands fa-github"></i> Source</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <h2 class="section-title reveal">Testimonials.</h2>
+        <p class="section-subtitle reveal">What people say about my work and work ethic.</p>
+
+        <div class="reviews-grid reveal">
+            <!-- Review 1 -->
+            <div class="review-card glass-panel">
+                <i class="fa-solid fa-quote-left review-icon"></i>
+                <p class="review-text">"Arsh is a highly motivated engineering student with a deep passion for electronics and hardware security. His ability to quickly grasp complex concepts and apply them practically is outstanding."</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar">P</div>
+                    <div class="reviewer-details">
+                        <h4>Professor Name</h4>
+                        <p>Faculty, DEI</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 2 -->
+            <div class="review-card glass-panel">
+                <i class="fa-solid fa-quote-left review-icon"></i>
+                <p class="review-text">"Working with Arsh during the HackSecure competition was incredible. He brings a unique blend of hardware knowledge and problem-solving skills that perfectly complemented our team's efforts."</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar">T</div>
+                    <div class="reviewer-details">
+                        <h4>Team Member</h4>
+                        <p>HackSecure X</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Form -->
+            <div class="review-card glass-panel" style="border: 1px solid var(--accent-purple);">
+                <h3 style="margin-bottom: 0.5rem; color: var(--text-primary); font-size: 1.3rem;">Leave a Review</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Have we worked together? I'd love to hear your feedback!</p>
+                <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 1rem; flex-grow: 1;">
+                    <input type="text" class="form-control" placeholder="Your Name" required style="padding: 1rem;">
+                    <textarea class="form-control" placeholder="Your Feedback..." required style="padding: 1rem; flex-grow: 1; min-height: 120px;"></textarea>
+                    <button type="submit" class="btn btn-primary magnetic" style="padding: 1rem; width: 100%;">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey / Timeline Section -->
+    <section id="journey">
+        <h2 class="section-title reveal">My Journey.</h2>
+        <p class="section-subtitle reveal">The timeline of my academic and technical growth.</p>
+
+        <div class="timeline reveal">
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-panel">
+                    <div class="timeline-date">2024</div>
+                    <h4>The Beginning</h4>
+                    <p>Started B.Tech Electrical Engineering at Dayalbagh Educational Institute. Built foundations in Mathematics, Electrical Engineering and Electronics.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-panel">
+                    <div class="timeline-date">2025</div>
+                    <h4>Specialization & Competitions</h4>
                     <ul>
-                        <li><i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> Agra, India</li>
-                        <li><i class="fa-solid fa-graduation-cap"></i> <strong>Degree:</strong> B.Tech Electrical Engineering</li>
-                        <li><i class="fa-solid fa-university"></i> <strong>University:</strong> Dayalbagh Educational Institute</li>
-                        <li><i class="fa-regular fa-calendar"></i> <strong>Status:</strong> 3rd Year (2026)</li>
-                        <li><i class="fa-solid fa-bolt"></i> <strong>Specialization:</strong> Electronics</li>
-                        <li><i class="fa-solid fa-lock"></i> <strong>Interests:</strong> Embedded Systems & Cybersecurity</li>
+                        <li>Qualified for Anveshan North Zone Research Convention</li>
+                        <li><strong>1st Position:</strong> IEEE Cybersecurity Quiz Competition</li>
                     </ul>
                 </div>
             </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="skills-section fade-in">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                
-                <div class="skill-category glass-card">
-                    <h3><i class="fa-solid fa-code"></i> Programming</h3>
-                    <div class="skill-item"><span>C</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></div>
-                    <div class="skill-item"><span>C++</span><div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div></div>
-                    <div class="skill-item"><span>Python</span><div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div></div>
-                    <div class="skill-item"><span>JavaScript</span><div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div></div>
-                    <div class="skill-item"><span>HTML</span><div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div></div>
-                    <div class="skill-item"><span>CSS</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></div>
-                </div>
-
-                <div class="skill-category glass-card">
-                    <h3><i class="fa-solid fa-microchip"></i> Electronics</h3>
-                    <div class="skill-item"><span>Arduino</span><div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div></div>
-                    <div class="skill-item"><span>Embedded Systems</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></div>
-                    <div class="skill-item"><span>Digital Electronics</span><div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div></div>
-                    <div class="skill-item"><span>Microcontrollers</span><div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div></div>
-                    <div class="skill-item"><span>Circuit Design</span><div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div></div>
-                    <div class="skill-item"><span>Sensors</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></div>
-                </div>
-
-                <div class="skill-category glass-card">
-                    <h3><i class="fa-solid fa-bolt"></i> Engineering</h3>
-                    <div class="skill-item"><span>Electrical Machines</span><div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div></div>
-                    <div class="skill-item"><span>Power Systems</span><div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div></div>
-                    <div class="skill-item"><span>PCB Basics</span><div class="skill-bar"><div class="skill-progress" data-width="65%"></div></div></div>
-                    <div class="skill-item"><span>Electronics Hardware</span><div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div></div>
-                </div>
-
-                <div class="skill-category glass-card">
-                    <h3><i class="fa-solid fa-shield-halved"></i> Cybersecurity</h3>
-                    <div class="skill-item"><span>Network Security</span><div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div></div>
-                    <div class="skill-item"><span>Linux</span><div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div></div>
-                    <div class="skill-item"><span>Basic Penetration Testing</span><div class="skill-bar"><div class="skill-progress" data-width="60%"></div></div></div>
-                    <div class="skill-item"><span>Cyber Awareness</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></div>
-                    <div class="skill-item"><span>Wireshark</span><div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div></div>
-                </div>
-
-                <div class="skill-category glass-card full-width">
-                    <h3><i class="fa-solid fa-toolbox"></i> Tools</h3>
-                    <div class="tools-tags">
-                        <span class="tag">Git</span>
-                        <span class="tag">GitHub</span>
-                        <span class="tag">VS Code</span>
-                        <span class="tag">MATLAB</span>
-                        <span class="tag">Proteus</span>
-                        <span class="tag">Multisim</span>
-                        <span class="tag">KiCad</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tech Stack Marquee -->
-        <section class="marquee-section">
-            <div class="marquee-container">
-                <div class="marquee-content">
-                    <!-- Duplicate for infinite loop effect -->
-                    <span><i class="fa-brands fa-html5"></i> HTML</span>
-                    <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
-                    <span><i class="fa-brands fa-js"></i> JavaScript</span>
-                    <span><i class="fa-brands fa-python"></i> Python</span>
-                    <span><i class="fa-solid fa-microchip"></i> Arduino</span>
-                    <span><i class="fa-brands fa-github"></i> GitHub</span>
-                    <span><i class="fa-solid fa-square-root-variable"></i> MATLAB</span>
-                    <span><i class="fa-solid fa-c"></i> C++</span>
-                    <span><i class="fa-solid fa-microchip"></i> Proteus</span>
-                    <span><i class="fa-brands fa-linux"></i> Linux</span>
-                    <!-- Duplicate -->
-                    <span><i class="fa-brands fa-html5"></i> HTML</span>
-                    <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
-                    <span><i class="fa-brands fa-js"></i> JavaScript</span>
-                    <span><i class="fa-brands fa-python"></i> Python</span>
-                    <span><i class="fa-solid fa-microchip"></i> Arduino</span>
-                    <span><i class="fa-brands fa-github"></i> GitHub</span>
-                    <span><i class="fa-solid fa-square-root-variable"></i> MATLAB</span>
-                    <span><i class="fa-solid fa-c"></i> C++</span>
-                    <span><i class="fa-solid fa-microchip"></i> Proteus</span>
-                    <span><i class="fa-brands fa-linux"></i> Linux</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Achievements Section -->
-        <section id="achievements" class="achievements-section fade-in">
-            <h2 class="section-title">Achievements</h2>
-            <div class="cards-grid">
-                <div class="achievement-card glass-card">
-                    <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
-                    <h3>HackSecure X International Hackathon <span class="year">(2026)</span></h3>
-                    <h4 class="highlight">Top 11 / 250 Teams Globally</h4>
-                    <p>Worked on solving real-world cybersecurity challenges while competing against international teams.</p>
-                </div>
-                <div class="achievement-card glass-card">
-                    <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
-                    <h3>DEI Virtual Labs Hackathon <span class="year">(2026)</span></h3>
-                    <h4 class="highlight">Top 20 / 200 Teams</h4>
-                    <p>National-level innovation competition focused on engineering and virtual laboratory solutions.</p>
-                </div>
-                <div class="achievement-card glass-card">
-                    <div class="card-icon"><i class="fa-solid fa-medal"></i></div>
-                    <h3>Anveshan Zonal Research Convention <span class="year">(2025)</span></h3>
-                    <h4 class="highlight">North Zone Qualifier</h4>
-                    <p>Qualified for North Zone Student Research Convention representing undergraduate research.</p>
-                </div>
-                <div class="achievement-card glass-card">
-                    <div class="card-icon"><i class="fa-solid fa-award"></i></div>
-                    <h3>IEEE Cybersecurity Quiz <span class="year">(2025)</span></h3>
-                    <h4 class="highlight">🥇 First Position</h4>
-                    <p>Won the Cyber Career Insight Quiz organized by IEEE DEI Student Branch in collaboration with NGMB Software Solutions.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects-section fade-in">
-            <h2 class="section-title">Projects</h2>
-            <div class="cards-grid">
-                <div class="project-card glass-card">
-                    <div class="project-header">
-                        <h3>AI Microgrid Energy Scheduler</h3>
-                        <div class="project-tech">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Chart.js</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <p>Developed a smart microgrid simulator capable of optimizing battery usage, solar generation, and grid consumption using scheduling algorithms.</p>
-                    </div>
-                </div>
-
-                <div class="project-card glass-card">
-                    <div class="project-header">
-                        <h3>Smart Dustbin</h3>
-                        <div class="project-tech">
-                            <span class="tag">Arduino Nano</span>
-                            <span class="tag">Ultrasonic Sensor</span>
-                            <span class="tag">Servo Motor</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <p>Automatic lid opening system using ultrasonic sensing for improved hygiene and waste management automation.</p>
-                    </div>
-                </div>
-
-                <div class="project-card glass-card">
-                    <div class="project-header">
-                        <h3>Road Condition Survey Bot</h3>
-                        <div class="project-tech">
-                            <span class="tag">Arduino</span>
-                            <span class="tag">Sensors</span>
-                            <span class="tag">Robotics</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <p>Robot capable of collecting road-condition information for analysis and maintenance planning.</p>
-                    </div>
-                </div>
-
-                <div class="project-card glass-card">
-                    <div class="project-header">
-                        <h3>OptiPress</h3>
-                        <div class="project-tech">
-                            <span class="tag">IIoT</span>
-                            <span class="tag">Arduino Opta</span>
-                            <span class="tag">Industrial Automation</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <p>Industrial compressor monitoring and predictive maintenance solution designed to reduce downtime.</p>
-                    </div>
-                </div>
-
-                <div class="project-card glass-card">
-                    <div class="project-header">
-                        <h3>Portfolio Website</h3>
-                        <div class="project-tech">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <p>Responsive personal portfolio showcasing projects, achievements, and professional journey with modern UI principles.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications" class="certifications-section fade-in">
-            <h2 class="section-title">Certifications</h2>
-            <div class="cert-grid">
-                <div class="cert-card glass-card">
-                    <i class="fa-solid fa-network-wired"></i>
-                    <h4>Cisco Networking</h4>
-                </div>
-                <div class="cert-card glass-card">
-                    <i class="fa-solid fa-laptop-code"></i>
-                    <h4>NPTEL</h4>
-                </div>
-                <div class="cert-card glass-card">
-                    <i class="fa-brands fa-coursera"></i>
-                    <h4>Coursera</h4>
-                </div>
-                <div class="cert-card glass-card">
-                    <i class="fa-brands fa-ieee"></i>
-                    <h4>IEEE</h4>
-                </div>
-                <div class="cert-card glass-card">
-                    <i class="fa-brands fa-google"></i>
-                    <h4>Google</h4>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="experience-section fade-in">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline-container">
-                <div class="timeline-item glass-card glow-border">
-                    <div class="timeline-dot"><i class="fa-solid fa-briefcase"></i></div>
-                    <div class="timeline-content">
-                        <h3>Industrial Internship</h3>
-                        <h4 class="company">MEI Power Private Limited (MARSONS), Agra</h4>
-                        <p>Worked on transformer manufacturing, testing, insulation systems, winding, core assembly, and production processes while gaining practical exposure to power engineering.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Journey Section -->
-        <section id="journey" class="journey-section fade-in">
-            <h2 class="section-title">My Journey</h2>
-            <div class="timeline-container">
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"><i class="fa-solid fa-calendar-days"></i></div>
-                    <div class="timeline-content glass-card">
-                        <h3>2024 — First Year</h3>
-                        <p>Started B.Tech Electrical Engineering at Dayalbagh Educational Institute.<br>Built strong foundations in Mathematics, Electrical Engineering, Electronics, and Programming.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"><i class="fa-solid fa-calendar-days"></i></div>
-                    <div class="timeline-content glass-card">
-                        <h3>2025 — Second Year</h3>
-                        <p>Specialized in Electronics.<br>Started participating in hackathons, cybersecurity events, and engineering competitions.</p>
-                        <div class="timeline-highlights">
-                            <span class="highlight-pill"><i class="fa-solid fa-check"></i> Qualified: Anveshan North Zone</span>
-                            <span class="highlight-pill"><i class="fa-solid fa-trophy"></i> Won: IEEE Cybersecurity Quiz (1st)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"><i class="fa-solid fa-calendar-days"></i></div>
-                    <div class="timeline-content glass-card">
-                        <h3>2026</h3>
-                        <p>Competed on national and global stages, achieving significant milestones.</p>
-                        <div class="timeline-highlights">
-                            <span class="highlight-pill"><i class="fa-solid fa-globe"></i> Top 11 Global: HackSecure X</span>
-                            <span class="highlight-pill"><i class="fa-solid fa-flag"></i> Top 20 National: DEI Virtual Labs</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item active">
-                    <div class="timeline-dot pulse-dot"><i class="fa-solid fa-rocket"></i></div>
-                    <div class="timeline-content glass-card border-glow">
-                        <h3>Current Focus — 3rd Year <span class="date-badge">July 2026</span></h3>
-                        <ul class="focus-list">
-                            <li><i class="fa-solid fa-angle-right"></i> Embedded Systems</li>
-                            <li><i class="fa-solid fa-angle-right"></i> Electronics</li>
-                            <li><i class="fa-solid fa-angle-right"></i> Cybersecurity</li>
-                            <li><i class="fa-solid fa-angle-right"></i> Research</li>
-                            <li><i class="fa-solid fa-angle-right"></i> Internship Preparation</li>
-                            <li><i class="fa-solid fa-angle-right"></i> Advanced Engineering Projects</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Future Plans Section -->
-        <section id="future" class="future-section fade-in">
-            <h2 class="section-title">Future Plans</h2>
-            <div class="plans-grid">
-                <div class="plan-card glass-card">
-                    <div class="plan-icon"><i class="fa-solid fa-bullseye"></i></div>
-                    <h3>Short Term</h3>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-panel">
+                    <div class="timeline-date">2026</div>
+                    <h4>Global & National Recognition</h4>
                     <ul>
-                        <li>Secure an internship in Embedded Systems or Electronics.</li>
-                        <li>Build advanced engineering projects.</li>
-                        <li>Strengthen DSA and core electrical concepts.</li>
-                        <li>Publish technical work.</li>
+                        <li><strong>Top 11 Globally:</strong> HackSecure X International Hackathon</li>
+                        <li><strong>Top 20 National:</strong> DEI Virtual Labs Hackathon</li>
                     </ul>
                 </div>
-                <div class="plan-card glass-card">
-                    <div class="plan-icon"><i class="fa-solid fa-eye"></i></div>
-                    <h3>5-Year Vision</h3>
-                    <p>Become an Embedded Systems Engineer specializing in intelligent hardware, IoT, and secure electronics while contributing to innovative engineering solutions.</p>
-                </div>
-                <div class="plan-card glass-card highlight-card">
-                    <div class="plan-icon"><i class="fa-solid fa-star"></i></div>
-                    <h3>Dream Roles</h3>
-                    <div class="dream-roles">
-                        <span class="role">Embedded Systems Engineer</span>
-                        <span class="role-separator">OR</span>
-                        <span class="role">Electronics Design Engineer</span>
-                        <span class="role-separator">OR</span>
-                        <span class="role">Cybersecurity Engineer for Critical Infrastructure</span>
-                    </div>
-                </div>
             </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section fade-in">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container glass-card">
-                <p class="contact-text">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
-                <div class="contact-links">
-                    <a href="mailto:arshsatsangi0@gmail.com" class="contact-link">
-                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
-                        <span>arshsatsangi0@gmail.com</span>
-                    </a>
-                    <a href="tel:9068515123" class="contact-link">
-                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-                        <span>+91 9068515123</span>
-                    </a>
-                    <a href="https://share.google/55IGbbIpKIH7DIZmH" target="_blank" rel="noopener noreferrer" class="contact-link">
-                        <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
-                        <span>LinkedIn Profile</span>
-                    </a>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-panel">
+                    <div class="timeline-date">July 2026</div>
+                    <h4>Started 3rd Year</h4>
+                    <p>Current Focus:</p>
+                    <ul>
+                        <li>Embedded Systems & Electronics</li>
+                        <li>Research & Cybersecurity</li>
+                        <li>Securing Internships</li>
+                    </ul>
                 </div>
             </div>
-        </section>
-    </main>
+
+        </div>
+    </section>
+
+    <!-- Future Plans Section -->
+    <section id="future">
+        <h2 class="section-title reveal">Future Plans.</h2>
+        <p class="section-subtitle reveal">Where I am heading next.</p>
+        
+        <div class="future-grid reveal">
+            
+            <div class="future-card glass-panel">
+                <i class="fa-solid fa-bullseye future-icon"></i>
+                <h3>Short Term Goal</h3>
+                <ul>
+                    <li>Secure an internship</li>
+                    <li>Publish research</li>
+                    <li>Build advanced projects</li>
+                    <li>Improve DSA skills</li>
+                </ul>
+            </div>
+
+            <div class="future-card glass-panel">
+                <i class="fa-solid fa-rocket future-icon"></i>
+                <h3>5 Year Vision</h3>
+                <p>Become an Embedded Systems Engineer working on secure intelligent hardware, IoT and advanced Electronics.</p>
+            </div>
+
+            <div class="future-card glass-panel">
+                <i class="fa-solid fa-briefcase future-icon"></i>
+                <h3>Dream Roles</h3>
+                <ul>
+                    <li>Embedded Systems Engineer</li>
+                    <li>Electronics Design Engineer</li>
+                    <li>Cybersecurity Engineer</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title reveal">Let's Connect.</h2>
+        <p class="section-subtitle reveal">I am open for internships, collaborations, and new opportunities.</p>
+        
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <a href="mailto:arshsatsangi0@gmail.com" class="magnetic">
+                    <i class="fa-solid fa-envelope"></i> arshsatsangi0@gmail.com
+                </a>
+                <a href="tel:+919068515123" class="magnetic">
+                    <i class="fa-solid fa-phone"></i> +91 9068515123
+                </a>
+                <a href="https://share.google/55IGbbIpKIH7DIZmH" target="_blank" class="magnetic">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
+                </a>
+                
+                <!-- EDIT HERE: Resume Link -->
+                <a href="#" class="btn btn-primary magnetic" style="display: inline-flex; margin-top: 2rem;">
+                    Download Resume <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+            <div class="contact-form glass-panel reveal">
+                <!-- EDIT HERE: Form action URL (e.g., Formspree) -->
+                <form action="#" method="POST">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <textarea class="form-control" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary magnetic" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Arsh Satsangi. Designed & Built with <i class="fa-solid fa-heart"></i></p>
+        <p>&copy; <span id="footer-year"></span> Arsh Satsangi. Designed with passion.</p>
+        <div style="margin-top: 1rem; font-size: 1.5rem; display: flex; justify-content: center; gap: 1rem;">
+            <a href="#" style="color: var(--text-secondary);"><i class="fa-brands fa-github"></i></a>
+            <a href="https://share.google/55IGbbIpKIH7DIZmH" style="color: var(--text-secondary);"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" aria-label="Back to Top">
+    <button id="back-top" class="magnetic">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <!-- =========================================
+         JAVASCRIPT
+         ========================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Remove Loading Screen
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 800);
+            }, 1000);
+
+            // 2. Custom Cursor & Magnetic Buttons
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorGlow = document.querySelector('.cursor-glow');
+            const magnetics = document.querySelectorAll('.magnetic');
+
+            document.addEventListener('mousemove', (e) => {
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+                
+                // Small delay for glow for smooth effect
+                setTimeout(() => {
+                    cursorGlow.style.left = e.clientX + 'px';
+                    cursorGlow.style.top = e.clientY + 'px';
+                }, 50);
+            });
+
+            magnetics.forEach(btn => {
+                btn.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const h = rect.width / 2;
+                    const v = rect.height / 2;
+                    const x = e.clientX - rect.left - h;
+                    const y = e.clientY - rect.top - v;
+                    
+                    this.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+                });
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = `translate(0px, 0px)`;
+                });
+            });
+
+            // 3. Scroll Progress Bar
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('scroll-progress').style.width = scrolled + '%';
+            });
+
+            // 4. Dark/Light Theme Toggle
+            const themeBtn = document.getElementById('theme-btn');
+            const icon = themeBtn.querySelector('i');
+            
+            // Default to Dark Theme as requested
+            if(localStorage.getItem('theme') !== 'light') {
+                document.body.classList.add('dark-mode');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                document.body.classList.remove('dark-mode');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+
+            themeBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                if(document.body.classList.contains('dark-mode')) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+
+            // 5. Mobile Navbar Toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Navbar background blur on scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if(window.scrollY > 50) {
+                    navbar.style.boxShadow = 'var(--glass-shadow)';
+                } else {
+                    navbar.style.boxShadow = 'none';
+                }
+            });
+
+            // 6. Time and Year Updater
+            const timeEl = document.getElementById('current-time');
+            const yearEl = document.getElementById('current-year');
+            const footerYear = document.getElementById('footer-year');
+            
+            function updateTime() {
+                const now = new Date();
+                timeEl.innerHTML = `<i class="fa-regular fa-clock"></i> ${now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} (IST)`;
+            }
+            setInterval(updateTime, 60000);
+            updateTime();
+            
+            const currentYear = new Date().getFullYear();
+            yearEl.innerHTML = `<i class="fa-solid fa-calendar"></i> ${currentYear}`;
+            footerYear.textContent = currentYear;
+
+            // 7. Typing Animation
+            const roles = [
+                "Electrical Engineering Student",
+                "Electronics Specialist",
+                "Embedded Systems Developer",
+                "Cybersecurity Enthusiast"
+            ];
+            let roleIdx = 0;
+            let charIdx = 0;
+            let isDeleting = false;
+            const typingText = document.querySelector('.typing-text');
+
+            function typeEffect() {
+                const currentRole = roles[roleIdx];
+                if(isDeleting) {
+                    typingText.textContent = currentRole.substring(0, charIdx - 1);
+                    charIdx--;
+                } else {
+                    typingText.textContent = currentRole.substring(0, charIdx + 1);
+                    charIdx++;
+                }
+
+                let speed = isDeleting ? 50 : 100;
+                
+                if(!isDeleting && charIdx === currentRole.length) {
+                    speed = 2000;
+                    isDeleting = true;
+                } else if(isDeleting && charIdx === 0) {
+                    isDeleting = false;
+                    roleIdx = (roleIdx + 1) % roles.length;
+                    speed = 500;
+                }
+                setTimeout(typeEffect, speed);
+            }
+            setTimeout(typeEffect, 1500);
+
+            // 8. Intersection Observer for Scroll Reveals & Animations
+            const revealElements = document.querySelectorAll('.reveal');
+            const skillBars = document.querySelectorAll('.skill-bar-fill');
+            const counters = document.querySelectorAll('.stat-number');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        // General Reveal
+                        if(entry.target.classList.contains('reveal')) {
+                            entry.target.classList.add('active');
+                        }
+                        // Skill Bars
+                        if(entry.target.classList.contains('skill-bar-fill')) {
+                            entry.target.style.width = entry.target.getAttribute('data-width');
+                        }
+                        // Counters
+                        if(entry.target.classList.contains('stat-number') && !entry.target.classList.contains('counted')) {
+                            entry.target.classList.add('counted');
+                            const target = +entry.target.getAttribute('data-target');
+                            const duration = 2000;
+                            const increment = target / (duration / 16);
+                            let current = 0;
+                            const updateCount = () => {
+                                current += increment;
+                                const hasPlus = entry.target.hasAttribute('data-plus') || target > 10;
+                                if(current < target) {
+                                    entry.target.innerText = Math.ceil(current) + (hasPlus ? '+' : '');
+                                    requestAnimationFrame(updateCount);
+                                } else {
+                                    entry.target.innerText = target + (hasPlus ? '+' : '');
+                                }
+                            };
+                            updateCount();
+                        }
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            revealElements.forEach(el => observer.observe(el));
+            skillBars.forEach(el => observer.observe(el));
+            counters.forEach(el => observer.observe(el));
+
+            // 9. Project Filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    projectCards.forEach(card => {
+                        card.style.transition = "transform 0.4s, opacity 0.4s";
+                        if(filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'flex';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.8)';
+                            setTimeout(() => card.style.display = 'none', 400);
+                        }
+                    });
+                });
+            });
+
+            // 10. Generate GitHub style activity grid
+            const activityGrid = document.getElementById('activity-grid');
+            if(activityGrid) {
+                // Generate 180 boxes (approx 6 months)
+                for(let i=0; i<180; i++) {
+                    const box = document.createElement('div');
+                    box.classList.add('activity-box');
+                    // Random activity level
+                    const rand = Math.random();
+                    if(rand > 0.8) box.classList.add('activity-level-3');
+                    else if(rand > 0.5) box.classList.add('activity-level-2');
+                    else if(rand > 0.3) box.classList.add('activity-level-1');
+                    activityGrid.appendChild(box);
+                }
+            }
+
+            // 11. Back to Top Button
+            const backTop = document.getElementById('back-top');
+            window.addEventListener('scroll', () => {
+                if(window.scrollY > 500) {
+                    backTop.classList.add('show');
+                } else {
+                    backTop.classList.remove('show');
+                }
+            });
+            backTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+        });
+    </script>
 </body>
 </html>
