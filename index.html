@@ -1596,16 +1596,18 @@
             </div>
 
             <div class="contact-form glass-panel reveal">
-                <!-- EDIT HERE: Form action URL (e.g., Formspree) -->
-                <form action="#" method="POST">
+                <!-- Contact Form connected to FormSubmit -->
+                <form action="https://formsubmit.co/arshsatsangi0@gmail.com" method="POST" id="contact-form">
+                    <!-- Disable FormSubmit Captcha for seamless AJAX UX -->
+                    <input type="hidden" name="_captcha" value="false">
                     <div class="form-group" style="margin-bottom: 1.5rem;">
-                        <input type="text" class="form-control" placeholder="Your Name" required>
+                        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 1.5rem;">
-                        <input type="email" class="form-control" placeholder="Your Email" required>
+                        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 1.5rem;">
-                        <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary magnetic" style="width: 100%;">Send Message</button>
                 </form>
