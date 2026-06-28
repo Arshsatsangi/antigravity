@@ -219,6 +219,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Local Feedback System (Client-Side) ---
+    const reviewsGrid = document.querySelector('.reviews-grid');
+    
+    // Load local reviews from storage
+    const loadLocalReviews = () => {
+        if (!reviewsGrid) return;
+        
+        // Remove previously injected local reviews to prevent duplicates on edit
+        document.querySelectorAll('.local-review-card').forEach(card => card.remove());
+
+        const localReviews = JSON.parse(localStorage.getItem('arshFeedback')) || [];
+        
+        localReviews.forEach((review, index) => {
+            const card = document.createElement('div');
+            card.className = 'review-card glass-panel local-review-card';
+            card.style.position = 'relative'; // for absolute positioning of admin buttons
+            
+            card.innerHTML = `
+                <i class="fa-solid fa-quote-left review-icon"></i>
+                <p class="review-text">"${review.text}"</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar">${review.name.charAt(0).toUpperCase()}</div>
+                    <div class="reviewer-details">
+                        <h4>${review.name}</h4>
+                        <p>Website Visitor</p>
+                    </div>
+                </div>
+                <div class="admin-controls" style="position: absolute; top: 1rem; right: 1rem; display: flex; gap: 0.5rem; z-index: 10;">
+                    <button class="edit-btn" data-index="${index}" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--primary-color); cursor: pointer; border-radius: 4px; padding: 4px 8px; font-size: 0.8rem; transition: 0.3s;"><i class="fa-solid fa-pen"></i></button>
+                    <button class="delete-btn" data-index="${index}" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #ef4444; cursor: pointer; border-radius: 4px; padding: 4px 8px; font-size: 0.8rem; transition: 0.3s;"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `;
+            
+            // Event listeners for admin controls
+            card.querySelector('.delete-btn').addEventListener('click', () => {
+                if(confirm('Are you sure you want to delete this feedback?')) {
+                    localReviews.splice(index, 1);
+                    localStorage.setItem('arshFeedback', JSON.stringify(localReviews));
+                    loadLocalReviews();
+                }
+            });
+
+            card.querySelector('.edit-btn').addEventListener('click', () => {
+                const newText = prompt('Edit feedback:', review.text);
+                if (newText !== null && newText.trim() !== '') {
+                    localReviews[index].text = newText;
+                    localStorage.setItem('arshFeedback', JSON.stringify(localReviews));
+                    loadLocalReviews();
+                }
+            });
+
+            // Prepend to grid
+            reviewsGrid.insertBefore(card, reviewsGrid.firstChild);
+        });
+    };
+
+    // Initial load
+    loadLocalReviews();
+
     // Form Submission Handling (Premium UI Feedback)
     document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', (e) => {
@@ -226,6 +285,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const btn = form.querySelector('button[type="submit"]');
             if (!btn) return;
+            
+            const isFeedbackForm = btn.innerText.toLowerCase().includes('feedback');
+            const nameInput = form.querySelector('input[type="text"]');
+            const feedbackInput = form.querySelector('textarea');
             
             const originalText = btn.innerText;
             const originalBg = btn.style.backgroundColor;
@@ -237,6 +300,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Simulate network request delay
             setTimeout(() => {
+                // If it's the feedback form, save to local storage
+                if (isFeedbackForm && nameInput && feedbackInput) {
+                    const localReviews = JSON.parse(localStorage.getItem('arshFeedback')) || [];
+                    localReviews.push({
+                        name: nameInput.value,
+                        text: feedbackInput.value,
+                        date: new Date().toISOString()
+                    });
+                    localStorage.setItem('arshFeedback', JSON.stringify(localReviews));
+                    loadLocalReviews(); // Refresh grid
+                }
+
                 btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
                 btn.style.backgroundColor = '#10B981'; // Success green
                 btn.style.color = '#fff';
@@ -251,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.style.backgroundColor = originalBg; 
                     btn.style.pointerEvents = 'auto';
                 }, 3000);
-            }, 1500);
+            }, 1000); // reduced delay for better feel
         });
     });
 
