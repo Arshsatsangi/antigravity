@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsh Satsangi | Electrical & Electronics Engineer</title>
+    <meta name="description" content="Portfolio of Arsh Satsangi, B.Tech Electrical Engineering student specializing in Electronics, Embedded Systems, and Cybersecurity.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode"> <!-- Default to dark mode for a premium feel -->
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-glow"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Animated Background Blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="#hero">Arsh<span>.</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+                <i class="fa-solid fa-sun"></i>
+            </button>
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h2 class="greeting">Hi, I'm</h2>
+                <h1 class="name">Arsh Satsangi</h1>
+                <h3 class="subtitle">Electrical & Electronics Engineering Student</h3>
+                <p class="tagline">Building Intelligent Systems through<br>
+                <span class="highlight">Electronics • Embedded Systems • Cybersecurity</span></p>
+                <div class="typing-container">
+                    <span class="typing-prefix">I am a </span>
+                    <span id="typing-text"></span><span class="cursor">|</span>
+                </div>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Counter Section -->
+        <section id="stats" class="stats-section fade-in">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3 class="stat-num" data-target="4">0</h3>
+                    <p>Major Projects</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-num" data-target="4">0</h3>
+                    <p>Achievements</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-num" data-target="2" data-plus="true">0</h3>
+                    <p>Hackathons</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-num-text">3rd</h3>
+                    <p>Year Student</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section fade-in">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text glass-card">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p>I am a B.Tech Electrical Engineering student at Dayalbagh Educational Institute with a specialization in Electronics. I enjoy building practical engineering solutions by combining electrical systems, embedded electronics, and cybersecurity. Through hackathons, research competitions, and hands-on projects, I continuously challenge myself to solve real-world problems and expand my technical expertise.</p>
+                </div>
+                <div class="quick-facts glass-card">
+                    <h3>Quick Facts</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> Agra, India</li>
+                        <li><i class="fa-solid fa-graduation-cap"></i> <strong>Degree:</strong> B.Tech Electrical Engineering</li>
+                        <li><i class="fa-solid fa-university"></i> <strong>University:</strong> Dayalbagh Educational Institute</li>
+                        <li><i class="fa-regular fa-calendar"></i> <strong>Status:</strong> 3rd Year (2026)</li>
+                        <li><i class="fa-solid fa-bolt"></i> <strong>Specialization:</strong> Electronics</li>
+                        <li><i class="fa-solid fa-lock"></i> <strong>Interests:</strong> Embedded Systems & Cybersecurity</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section fade-in">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-code"></i> Programming</h3>
+                    <div class="skill-item"><span>C</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></div>
+                    <div class="skill-item"><span>C++</span><div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div></div>
+                    <div class="skill-item"><span>Python</span><div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div></div>
+                    <div class="skill-item"><span>JavaScript</span><div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div></div>
+                    <div class="skill-item"><span>HTML</span><div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div></div>
+                    <div class="skill-item"><span>CSS</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></div>
+                </div>
+
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-microchip"></i> Electronics</h3>
+                    <div class="skill-item"><span>Arduino</span><div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div></div>
+                    <div class="skill-item"><span>Embedded Systems</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></div>
+                    <div class="skill-item"><span>Digital Electronics</span><div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div></div>
+                    <div class="skill-item"><span>Microcontrollers</span><div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div></div>
+                    <div class="skill-item"><span>Circuit Design</span><div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div></div>
+                    <div class="skill-item"><span>Sensors</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></div>
+                </div>
+
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-bolt"></i> Engineering</h3>
+                    <div class="skill-item"><span>Electrical Machines</span><div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div></div>
+                    <div class="skill-item"><span>Power Systems</span><div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div></div>
+                    <div class="skill-item"><span>PCB Basics</span><div class="skill-bar"><div class="skill-progress" data-width="65%"></div></div></div>
+                    <div class="skill-item"><span>Electronics Hardware</span><div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div></div>
+                </div>
+
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Cybersecurity</h3>
+                    <div class="skill-item"><span>Network Security</span><div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div></div>
+                    <div class="skill-item"><span>Linux</span><div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div></div>
+                    <div class="skill-item"><span>Basic Penetration Testing</span><div class="skill-bar"><div class="skill-progress" data-width="60%"></div></div></div>
+                    <div class="skill-item"><span>Cyber Awareness</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></div>
+                    <div class="skill-item"><span>Wireshark</span><div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div></div>
+                </div>
+
+                <div class="skill-category glass-card full-width">
+                    <h3><i class="fa-solid fa-toolbox"></i> Tools</h3>
+                    <div class="tools-tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">GitHub</span>
+                        <span class="tag">VS Code</span>
+                        <span class="tag">MATLAB</span>
+                        <span class="tag">Proteus</span>
+                        <span class="tag">Multisim</span>
+                        <span class="tag">KiCad</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Marquee -->
+        <section class="marquee-section">
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <!-- Duplicate for infinite loop effect -->
+                    <span><i class="fa-brands fa-html5"></i> HTML</span>
+                    <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                    <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                    <span><i class="fa-brands fa-python"></i> Python</span>
+                    <span><i class="fa-solid fa-microchip"></i> Arduino</span>
+                    <span><i class="fa-brands fa-github"></i> GitHub</span>
+                    <span><i class="fa-solid fa-square-root-variable"></i> MATLAB</span>
+                    <span><i class="fa-solid fa-c"></i> C++</span>
+                    <span><i class="fa-solid fa-microchip"></i> Proteus</span>
+                    <span><i class="fa-brands fa-linux"></i> Linux</span>
+                    <!-- Duplicate -->
+                    <span><i class="fa-brands fa-html5"></i> HTML</span>
+                    <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                    <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                    <span><i class="fa-brands fa-python"></i> Python</span>
+                    <span><i class="fa-solid fa-microchip"></i> Arduino</span>
+                    <span><i class="fa-brands fa-github"></i> GitHub</span>
+                    <span><i class="fa-solid fa-square-root-variable"></i> MATLAB</span>
+                    <span><i class="fa-solid fa-c"></i> C++</span>
+                    <span><i class="fa-solid fa-microchip"></i> Proteus</span>
+                    <span><i class="fa-brands fa-linux"></i> Linux</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="achievements-section fade-in">
+            <h2 class="section-title">Achievements</h2>
+            <div class="cards-grid">
+                <div class="achievement-card glass-card">
+                    <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
+                    <h3>HackSecure X International Hackathon <span class="year">(2026)</span></h3>
+                    <h4 class="highlight">Top 11 / 250 Teams Globally</h4>
+                    <p>Worked on solving real-world cybersecurity challenges while competing against international teams.</p>
+                </div>
+                <div class="achievement-card glass-card">
+                    <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
+                    <h3>DEI Virtual Labs Hackathon <span class="year">(2026)</span></h3>
+                    <h4 class="highlight">Top 20 / 200 Teams</h4>
+                    <p>National-level innovation competition focused on engineering and virtual laboratory solutions.</p>
+                </div>
+                <div class="achievement-card glass-card">
+                    <div class="card-icon"><i class="fa-solid fa-medal"></i></div>
+                    <h3>Anveshan Zonal Research Convention <span class="year">(2025)</span></h3>
+                    <h4 class="highlight">North Zone Qualifier</h4>
+                    <p>Qualified for North Zone Student Research Convention representing undergraduate research.</p>
+                </div>
+                <div class="achievement-card glass-card">
+                    <div class="card-icon"><i class="fa-solid fa-award"></i></div>
+                    <h3>IEEE Cybersecurity Quiz <span class="year">(2025)</span></h3>
+                    <h4 class="highlight">🥇 First Position</h4>
+                    <p>Won the Cyber Career Insight Quiz organized by IEEE DEI Student Branch in collaboration with NGMB Software Solutions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section fade-in">
+            <h2 class="section-title">Projects</h2>
+            <div class="cards-grid">
+                <div class="project-card glass-card">
+                    <div class="project-header">
+                        <h3>AI Microgrid Energy Scheduler</h3>
+                        <div class="project-tech">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Chart.js</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p>Developed a smart microgrid simulator capable of optimizing battery usage, solar generation, and grid consumption using scheduling algorithms.</p>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card">
+                    <div class="project-header">
+                        <h3>Smart Dustbin</h3>
+                        <div class="project-tech">
+                            <span class="tag">Arduino Nano</span>
+                            <span class="tag">Ultrasonic Sensor</span>
+                            <span class="tag">Servo Motor</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p>Automatic lid opening system using ultrasonic sensing for improved hygiene and waste management automation.</p>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card">
+                    <div class="project-header">
+                        <h3>Road Condition Survey Bot</h3>
+                        <div class="project-tech">
+                            <span class="tag">Arduino</span>
+                            <span class="tag">Sensors</span>
+                            <span class="tag">Robotics</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p>Robot capable of collecting road-condition information for analysis and maintenance planning.</p>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card">
+                    <div class="project-header">
+                        <h3>OptiPress</h3>
+                        <div class="project-tech">
+                            <span class="tag">IIoT</span>
+                            <span class="tag">Arduino Opta</span>
+                            <span class="tag">Industrial Automation</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p>Industrial compressor monitoring and predictive maintenance solution designed to reduce downtime.</p>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card">
+                    <div class="project-header">
+                        <h3>Portfolio Website</h3>
+                        <div class="project-tech">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p>Responsive personal portfolio showcasing projects, achievements, and professional journey with modern UI principles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications-section fade-in">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card glass-card">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <h4>Cisco Networking</h4>
+                </div>
+                <div class="cert-card glass-card">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <h4>NPTEL</h4>
+                </div>
+                <div class="cert-card glass-card">
+                    <i class="fa-brands fa-coursera"></i>
+                    <h4>Coursera</h4>
+                </div>
+                <div class="cert-card glass-card">
+                    <i class="fa-brands fa-ieee"></i>
+                    <h4>IEEE</h4>
+                </div>
+                <div class="cert-card glass-card">
+                    <i class="fa-brands fa-google"></i>
+                    <h4>Google</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience-section fade-in">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline-container">
+                <div class="timeline-item glass-card glow-border">
+                    <div class="timeline-dot"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="timeline-content">
+                        <h3>Industrial Internship</h3>
+                        <h4 class="company">MEI Power Private Limited (MARSONS), Agra</h4>
+                        <p>Worked on transformer manufacturing, testing, insulation systems, winding, core assembly, and production processes while gaining practical exposure to power engineering.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Section -->
+        <section id="journey" class="journey-section fade-in">
+            <h2 class="section-title">My Journey</h2>
+            <div class="timeline-container">
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-calendar-days"></i></div>
+                    <div class="timeline-content glass-card">
+                        <h3>2024 — First Year</h3>
+                        <p>Started B.Tech Electrical Engineering at Dayalbagh Educational Institute.<br>Built strong foundations in Mathematics, Electrical Engineering, Electronics, and Programming.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-calendar-days"></i></div>
+                    <div class="timeline-content glass-card">
+                        <h3>2025 — Second Year</h3>
+                        <p>Specialized in Electronics.<br>Started participating in hackathons, cybersecurity events, and engineering competitions.</p>
+                        <div class="timeline-highlights">
+                            <span class="highlight-pill"><i class="fa-solid fa-check"></i> Qualified: Anveshan North Zone</span>
+                            <span class="highlight-pill"><i class="fa-solid fa-trophy"></i> Won: IEEE Cybersecurity Quiz (1st)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-calendar-days"></i></div>
+                    <div class="timeline-content glass-card">
+                        <h3>2026</h3>
+                        <p>Competed on national and global stages, achieving significant milestones.</p>
+                        <div class="timeline-highlights">
+                            <span class="highlight-pill"><i class="fa-solid fa-globe"></i> Top 11 Global: HackSecure X</span>
+                            <span class="highlight-pill"><i class="fa-solid fa-flag"></i> Top 20 National: DEI Virtual Labs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item active">
+                    <div class="timeline-dot pulse-dot"><i class="fa-solid fa-rocket"></i></div>
+                    <div class="timeline-content glass-card border-glow">
+                        <h3>Current Focus — 3rd Year <span class="date-badge">July 2026</span></h3>
+                        <ul class="focus-list">
+                            <li><i class="fa-solid fa-angle-right"></i> Embedded Systems</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Electronics</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Cybersecurity</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Research</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Internship Preparation</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Advanced Engineering Projects</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Future Plans Section -->
+        <section id="future" class="future-section fade-in">
+            <h2 class="section-title">Future Plans</h2>
+            <div class="plans-grid">
+                <div class="plan-card glass-card">
+                    <div class="plan-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>Short Term</h3>
+                    <ul>
+                        <li>Secure an internship in Embedded Systems or Electronics.</li>
+                        <li>Build advanced engineering projects.</li>
+                        <li>Strengthen DSA and core electrical concepts.</li>
+                        <li>Publish technical work.</li>
+                    </ul>
+                </div>
+                <div class="plan-card glass-card">
+                    <div class="plan-icon"><i class="fa-solid fa-eye"></i></div>
+                    <h3>5-Year Vision</h3>
+                    <p>Become an Embedded Systems Engineer specializing in intelligent hardware, IoT, and secure electronics while contributing to innovative engineering solutions.</p>
+                </div>
+                <div class="plan-card glass-card highlight-card">
+                    <div class="plan-icon"><i class="fa-solid fa-star"></i></div>
+                    <h3>Dream Roles</h3>
+                    <div class="dream-roles">
+                        <span class="role">Embedded Systems Engineer</span>
+                        <span class="role-separator">OR</span>
+                        <span class="role">Electronics Design Engineer</span>
+                        <span class="role-separator">OR</span>
+                        <span class="role">Cybersecurity Engineer for Critical Infrastructure</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section fade-in">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container glass-card">
+                <p class="contact-text">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+                <div class="contact-links">
+                    <a href="mailto:arshsatsangi0@gmail.com" class="contact-link">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <span>arshsatsangi0@gmail.com</span>
+                    </a>
+                    <a href="tel:9068515123" class="contact-link">
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <span>+91 9068515123</span>
+                    </a>
+                    <a href="https://share.google/55IGbbIpKIH7DIZmH" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                        <span>LinkedIn Profile</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Arsh Satsangi. Designed & Built with <i class="fa-solid fa-heart"></i></p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
