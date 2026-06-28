@@ -298,35 +298,70 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.opacity = '0.8';
             btn.style.pointerEvents = 'none';
 
-            // Simulate network request delay
-            setTimeout(() => {
-                // If it's the feedback form, save to local storage
-                if (isFeedbackForm && nameInput && feedbackInput) {
-                    const localReviews = JSON.parse(localStorage.getItem('arshFeedback')) || [];
-                    localReviews.push({
-                        name: nameInput.value,
-                        text: feedbackInput.value,
-                        date: new Date().toISOString()
-                    });
-                    localStorage.setItem('arshFeedback', JSON.stringify(localReviews));
-                    loadLocalReviews(); // Refresh grid
-                }
-
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
-                btn.style.backgroundColor = '#10B981'; // Success green
-                btn.style.color = '#fff';
-                btn.style.opacity = '1';
-                
-                // Reset form fields
-                form.reset();
-
-                // Revert button after 3 seconds
+            if (form.id === 'contact-form') {
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
+                        btn.style.backgroundColor = '#10B981';
+                        btn.style.color = '#fff';
+                        btn.style.opacity = '1';
+                        form.reset();
+                        setTimeout(() => {
+                            btn.innerText = originalText;
+                            btn.style.backgroundColor = originalBg; 
+                            btn.style.pointerEvents = 'auto';
+                        }, 3000);
+                    } else {
+                        throw new Error('Failed to send');
+                    }
+                }).catch(error => {
+                    btn.innerHTML = '<i class="fa-solid fa-xmark"></i> Error sending';
+                    btn.style.backgroundColor = '#EF4444';
+                    btn.style.color = '#fff';
+                    btn.style.opacity = '1';
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.backgroundColor = originalBg; 
+                        btn.style.pointerEvents = 'auto';
+                    }, 3000);
+                });
+            } else {
+                // Simulate network request delay for local feedback
                 setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.backgroundColor = originalBg; 
-                    btn.style.pointerEvents = 'auto';
-                }, 3000);
-            }, 1000); // reduced delay for better feel
+                    // If it's the feedback form, save to local storage
+                    if (isFeedbackForm && nameInput && feedbackInput) {
+                        const localReviews = JSON.parse(localStorage.getItem('arshFeedback')) || [];
+                        localReviews.push({
+                            name: nameInput.value,
+                            text: feedbackInput.value,
+                            date: new Date().toISOString()
+                        });
+                        localStorage.setItem('arshFeedback', JSON.stringify(localReviews));
+                        loadLocalReviews(); // Refresh grid
+                    }
+    
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
+                    btn.style.backgroundColor = '#10B981'; // Success green
+                    btn.style.color = '#fff';
+                    btn.style.opacity = '1';
+                    
+                    // Reset form fields
+                    form.reset();
+    
+                    // Revert button after 3 seconds
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.backgroundColor = originalBg; 
+                        btn.style.pointerEvents = 'auto';
+                    }, 3000);
+                }, 1000); // reduced delay for better feel
+            }
         });
     });
 
