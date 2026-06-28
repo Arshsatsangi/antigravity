@@ -199,6 +199,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // --- Activity Grid (GitHub style) ---
+    const activityGrid = document.getElementById('activity-grid');
+    if(activityGrid) {
+        // Generate 180 boxes (approx 6 months)
+        for(let i=0; i<180; i++) {
+            const box = document.createElement('div');
+            box.classList.add('activity-box');
+            // Random activity level
+            const rand = Math.random();
+            if(rand > 0.8) box.classList.add('activity-level-3');
+            else if(rand > 0.5) box.classList.add('activity-level-2');
+            else if(rand > 0.3) box.classList.add('activity-level-1');
+            activityGrid.appendChild(box);
+        }
+    }
+
     // --- Back to Top Button ---
     const backToTopBtn = document.getElementById('back-to-top');
     
