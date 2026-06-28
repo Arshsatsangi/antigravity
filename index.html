@@ -1846,6 +1846,67 @@
                 });
             });
 
+            // 9.5 Form Submission Logic (AJAX & Local Feedback)
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const btn = form.querySelector('button[type="submit"]');
+                    if (!btn) return;
+                    
+                    const originalText = btn.innerText;
+                    const originalBg = btn.style.backgroundColor;
+                    
+                    btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
+                    btn.style.opacity = '0.8';
+                    btn.style.pointerEvents = 'none';
+
+                    if (form.id === 'contact-form') {
+                        fetch(form.action, {
+                            method: 'POST',
+                            body: new FormData(form),
+                            headers: { 'Accept': 'application/json' }
+                        }).then(response => {
+                            if (response.ok) {
+                                btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
+                                btn.style.backgroundColor = '#10B981';
+                                btn.style.color = '#fff';
+                                btn.style.opacity = '1';
+                                form.reset();
+                                setTimeout(() => {
+                                    btn.innerText = originalText;
+                                    btn.style.backgroundColor = originalBg; 
+                                    btn.style.pointerEvents = 'auto';
+                                }, 3000);
+                            } else throw new Error('Failed to send');
+                        }).catch(error => {
+                            btn.innerHTML = '<i class="fa-solid fa-xmark"></i> Error sending';
+                            btn.style.backgroundColor = '#EF4444';
+                            btn.style.color = '#fff';
+                            btn.style.opacity = '1';
+                            setTimeout(() => {
+                                btn.innerText = originalText;
+                                btn.style.backgroundColor = originalBg; 
+                                btn.style.pointerEvents = 'auto';
+                            }, 3000);
+                        });
+                    } else {
+                        // Simulated success for other forms (like feedback)
+                        setTimeout(() => {
+                            btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
+                            btn.style.backgroundColor = '#10B981';
+                            btn.style.color = '#fff';
+                            btn.style.opacity = '1';
+                            form.reset();
+                            setTimeout(() => {
+                                btn.innerText = originalText;
+                                btn.style.backgroundColor = originalBg; 
+                                btn.style.pointerEvents = 'auto';
+                            }, 3000);
+                        }, 1000);
+                    }
+                });
+            });
+
             // 10. Generate GitHub style activity grid
             const activityGrid = document.getElementById('activity-grid');
             if(activityGrid) {
